@@ -1,0 +1,48 @@
+package Unguided;
+
+public class ModelEksperimen implements Comparable<ModelEksperimen> {
+    private String namaModel;
+    private double akurasi;
+    private int waktuTraining;
+    
+    // Static variable untuk menghitung jumlah eksperimen
+    private static int jumlahEksperimen = 0;
+
+    // Constructor
+    public ModelEksperimen(String namaModel, double akurasi, int waktuTraining) {
+        this.namaModel = namaModel;
+        this.akurasi = akurasi;
+        this.waktuTraining = waktuTraining;
+        jumlahEksperimen++; // Bertambah setiap objek baru dibuat
+    }
+
+    // Getter
+    public String getNamaModel() {
+        return namaModel;
+    }
+
+    public double getAkurasi() {
+        return akurasi;
+    }
+
+    public int getWaktuTraining() {
+        return waktuTraining;
+    }
+
+    // Static method untuk mengambil jumlah eksperimen
+    public static int getJumlahEksperimen() {
+        return jumlahEksperimen;
+    }
+
+    // Comparable: Mengurutkan secara default berdasarkan akurasi dari tertinggi ke terendah
+    @Override
+    public int compareTo(ModelEksperimen other) {
+        return Double.compare(other.akurasi, this.akurasi);
+    }
+
+    // Format toString sesuai dengan contoh output
+    @Override
+    public String toString() {
+        return "Model " + namaModel + ", akurasi = " + akurasi + ", waktu = " + waktuTraining + " detik";
+    }
+}
